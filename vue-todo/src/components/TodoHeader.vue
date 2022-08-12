@@ -1,15 +1,8 @@
 <template>
   <header>
-    <h1>ToDO it!</h1>
+    <h1>TODO it!</h1>
   </header>
 </template>
-
-<script>
-export default {
- 
-}
-</script>
-
 
 // <style scoped> 컴포넌트 안에서만 유효한 스타일 속성
 <style scoped>
