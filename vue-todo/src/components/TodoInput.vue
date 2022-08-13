@@ -19,8 +19,8 @@
         if(this.newTodoItem !== ''){
           //값이 있을 때 실행
           //저장하는 로직
-          var obj = {completed:false,item:this.newTodoItem};
-          localStorage.setItem(this.newTodoItem,JSON.stringify(obj));
+          this.$emit('addTodoItem',this.newTodoItem);
+          // this.$emit('이벤트이름', 인자1,인자2,...)
           this.clearInput();
         }
       },
