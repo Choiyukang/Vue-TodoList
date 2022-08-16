@@ -2,8 +2,8 @@
   <div id="app">
       <TodoHeader></TodoHeader>
       <TodoInput v-on:addTodoItem="addOneItem"></TodoInput>
-      <TodoList v-bind:propsdata="todoItems"></TodoList>
-      <TodoFooter></TodoFooter>
+      <TodoList v-bind:propsdata="todoItems" v-on:removeItem="removeOneItem" v-on:toggleItem="toggleOneItem"></TodoList>
+      <TodoFooter v-on:clearAll="clearAllItems"></TodoFooter>
 <!-- <TodoList v-bind:내려보낼 프롭스 속성이름="현재 위치의 컴포넌트 속성이름"></TodoList> -->
       <!-- <TodoInput v-on:하위 컴포넌트에서 발생시킨 이벤트 이름="현재 컴포넌트의 메소드 이름"></TodoInput> -->
 
@@ -38,10 +38,23 @@ export default {
     }
   },
   methods:{
-    addOneItem:function(todoItemtodoItem){
-      var obj = {completed:false,item:this.todoItemtodoItem};
-      localStorage.setItem(this.todoItem,JSON.stringify(obj));
+    addOneItem:function(todoItem){
+      var obj = {completed:false,item: todoItem};
+      localStorage.setItem(todoItem,JSON.stringify(obj));
       this.todoItems.push(obj);
+    },
+    removeOneItem:function(todoItem, index){
+      localStorage.removeItem(todoItem.item);
+      this.todoItems.splice(index, 1);
+    },
+    toggleOneItem:function(todoItem, index){
+      this.todoItems[index].completed = !this.todoItems[index].completed;
+      localStorage.removeItem(todoItem.item);
+      localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
+    },
+    clearAllItems:function(){
+      localStorage.clear();
+      this.todoItems = [];
     }
   },
   created: function(){
