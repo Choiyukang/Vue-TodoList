@@ -13,9 +13,9 @@
 
           <div class="modal-footer">
             <slot name="footer">
-              <b-button
+              <button
                 @click="$emit('close')" variant="success"
-              >닫기</b-button>
+              >닫기</button>
             </slot>
           </div>
         </div>
