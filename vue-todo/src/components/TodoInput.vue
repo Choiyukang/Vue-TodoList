@@ -22,14 +22,14 @@
 import AlertModal  from './common/AlertModal.vue'
 
   export default {
-    data:function(){
+    data(){
       return {
         newTodoItem:"",
         showModal: false
       }
     },
     methods:{
-      addTodo:function(){
+      addTodo(){
         if(this.newTodoItem !== ''){
           //값이 있을 때 실행
           //저장하는 로직
@@ -41,13 +41,13 @@ import AlertModal  from './common/AlertModal.vue'
           this.showModal = !this.showModal;
         }
       },
-      clearInput:function(){
+      clearInput(){
         //input 초기화
         this.newTodoItem = '';
       }
     },
     components:{
-      AlertModal : AlertModal 
+      AlertModal 
     }
 
   }
