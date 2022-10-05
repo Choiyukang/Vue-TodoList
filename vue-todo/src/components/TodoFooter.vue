@@ -5,17 +5,22 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
 export default {
-methods:{
-  clearTodo:function(){
-    this.$emit('clearAll');
-  }
-}
-}
+  methods: {
+    ...mapMutations({
+      clearTodo:'clearAllItems'
+    })
+    // clearTodo() {
+    //   // this.$emit('clearAll');
+    //   this.$store.commit("clearAllItems");
+    // },
+  },
+};
 </script>
 
 <style scoped>
-.clearAllContainer{
+.clearAllContainer {
   width: 8.5rem;
   height: 50px;
   line-height: 50px;
@@ -23,7 +28,7 @@ methods:{
   border-radius: 5px;
   margin: 0 auto;
 }
-.clearAllBtn{
+.clearAllBtn {
   color: #e20303;
   display: block;
 }
